@@ -1,10 +1,12 @@
-exports.getTimeOfRequest = function* (next) {
+exports.getInfoAboutRequest = function* (next) {
     let request = this.request;
-    console.log(`Время: ${new Date().toLocaleString()}\nЗапрос: ${request.url}\nМетод: ${request.method}`);
+    console.log(`Запрос:\nВремя: ${new Date().toLocaleString()}\nЗапрос: ${request.url}\nМетод: ${request.method}\n Тело: ${JSON.stringify(request.body)}`);
     yield next;
+    let response = this.response;
+    console.log(`Ответ:\nКод: ${response.code}\nТело: ${JSON.stringify(response.body)}`);
 }
 
-exports.getInfoAboutRequest = function* (next) {
+exports.getTimeOfRequest = function* (next) {
 
     let time = performance.now();
     yield next;
