@@ -1,0 +1,8 @@
+Update Date: Thu Jul 08 2021 16:52:47 GMT+0300 (Москва, стандартное время)
+
+URL:/	HEAD|GET
+URL:/user/:id	HEAD|GET
+URL:/users	HEAD|GET
+URL:/user	POST
+URL:/user/:id	PUT
+URL:/user/:id	DELETE
