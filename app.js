@@ -1,11 +1,13 @@
-var koa = require('koa');
-var router = require('koa-router');
-var record = require('./route-map');
-var bodyParser = require('koa-bodyparser');
-var api = require('./api');
-var middleware = require('./middleware');
+const koa = require('koa');
+const router = require('koa-router');
+const record = require('./route-map');
+const bodyParser = require('koa-bodyparser');
+const api = require('./api');
+const middleware = require('./middleware');
+const validators = require('./validators');
 
-var app = new koa();
+//validators.validate();
+const app = new koa();
 
 const APIv1 = new router();
 APIv1.get('/', api.helloWorld);

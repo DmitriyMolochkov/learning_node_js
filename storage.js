@@ -2,16 +2,18 @@ class Storage{
     #users = new Map();
 
     getById(id) {
-        if(this.#users.has(id) == false) return null;
+        if(!this.#users.has(id)) return null;
         return this.#users.get(parseInt(id));
     }
 
     getAll(){
+        //посмотреть деструктаризацию
         return Array.from(this.#users.values());
     }
 
     add(user) {
         let id = 0;
+        // Math.max
         for (let number of this.#users.keys()) {
             if(id < number);
             id = number
@@ -23,7 +25,7 @@ class Storage{
     }
 
     updateById(id, user) {
-        if(this.#users.has(id) == false) return null;
+        if(!this.#users.has(id)) return null;
         let entity = this.getById(id);
         Object.assign(entity, user);
         entity.id = id;
