@@ -4,9 +4,7 @@ const record = require('./route-map');
 const bodyParser = require('koa-bodyparser');
 const api = require('./api');
 const middleware = require('./middleware');
-const validators = require('./validators');
 
-//validators.validate();
 const app = new koa();
 
 const APIv1 = new router();

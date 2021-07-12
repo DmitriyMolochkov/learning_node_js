@@ -1,4 +1,17 @@
-class Storage{
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/learning_node_js', {useNewUrlParser: true, useUnifiedTopology: true});
+
+const UserSchema = new mongoose.Schema({
+    id: mongoose.Schema.Types.ObjectId,
+    username: { type: String, required: true },
+    password: { type: String, required: true },
+    email: { type: String, index: true, required: true },
+});
+
+module.exports.User = mongoose.model('User', UserSchema);
+module.exports.db = mongoose;
+
+/*class Storage{
     #users = new Map();
 
     getById(id) {
@@ -37,4 +50,4 @@ class Storage{
     }
 }
 
-module.exports = Storage
+module.exports.Storage = Storage;*/
