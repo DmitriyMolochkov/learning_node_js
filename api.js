@@ -26,7 +26,7 @@ exports.getUsers = async function (ctx, next) {
 exports.createUser = async function (ctx, next) {
     const userData = validators.createUser(ctx.request.body);
     if (userData instanceof Error) return ValidationError(ctx, userData);
-    let user = new User({...userData});
+    let user = new User(userData);
     await user.save();
     ctx.body = user;
 };
