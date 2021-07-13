@@ -1,3 +1,5 @@
+const {performance} = require('perf_hooks');
+
 exports.getInfoAboutRequest = async function (ctx, next) {
     const request = ctx.request;
     console.log(`Запрос:\nВремя: ${new Date().toLocaleString()}\nЗапрос: ${request.url}\nМетод: ${request.method}\nТело: ${JSON.stringify(request.body)}`);

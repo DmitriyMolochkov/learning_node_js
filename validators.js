@@ -10,7 +10,7 @@ const userIdSchema = {
 };
 
 const userCreateSchema = {
-    username: Check(un => isString(un) && /(?=^[a-zA-Z])[a-zA-Z0-9]{3,10}/.test(un)),
+    username: Check(un => isString(un) && /(?=^[a-zA-Z])[a-zA-Z0-9]{3,10}$/.test(un)),
     password: Check(un => isString(un) && /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/.test(un)),
     email: Check(un => isString(un) && isEmail(un))
 };

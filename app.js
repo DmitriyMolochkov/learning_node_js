@@ -18,7 +18,10 @@ APIv1.delete('/user/:id', api.deleteUser);
 app.use(bodyParser());
 app.use(middleware.getTimeOfRequest);
 app.use(middleware.getInfoAboutRequest);
-
 app.use(APIv1.routes());
-record(APIv1, '.routers')
-app.listen(3000);
+
+
+record(APIv1, '.routers');
+app.use(APIv1.allowedMethods());
+const server = app.listen(3000);
+module.exports = server;
