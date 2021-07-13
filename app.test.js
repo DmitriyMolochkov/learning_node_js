@@ -31,13 +31,7 @@ const userUpdateModel = {
 };
 
 describe('CRUD user tests', () => {
-    test('get home route GET /', async () => {
-        const response = await request(server).get('/');
-        expect(response.status).toEqual(200);
-        expect(response.text).toContain('Hello World Application!');
-    });
-
-    test('create new user POST /user', async () => {
+    test('Create new user POST /user', async () => {
         const response = await request(server)
             .post('/user')
             .send(userCreateModel);
@@ -50,7 +44,7 @@ describe('CRUD user tests', () => {
         expect(response.body.password).toBe(userCreateModel.password);
     });
 
-    test('get user GET /user', async () => {
+    test('Get user GET /user', async () => {
         const response = await request(server)
             .get(`/user/${userGetModel._id}`)
             .send();
@@ -61,7 +55,7 @@ describe('CRUD user tests', () => {
         expect(response.body.password).toBe(userCreateModel.password);
     });
 
-     test('update user PUT /user', async () => {
+     test('Update user PUT /user', async () => {
          const response = await request(server)
              .put(`/user/${userGetModel._id}`)
              .send(userUpdateModel);
@@ -72,7 +66,7 @@ describe('CRUD user tests', () => {
          expect(response.body.password).toBe(userUpdateModel.password);
    });
 
-    test('get all users GET /users', async () => {
+    test('Get all users GET /users', async () => {
         const response = await request(server)
             .get(`/users`)
             .send();
@@ -85,7 +79,7 @@ describe('CRUD user tests', () => {
         expect(response.body[0].password).toBe(userUpdateModel.password);
     });
 
-    test('delete user DELETE /user', async () => {
+    test('Delete user DELETE /user', async () => {
         const response = await request(server)
             .delete(`/user/${userGetModel._id}`)
             .send();
@@ -93,7 +87,7 @@ describe('CRUD user tests', () => {
         expect(response.body).toEqual({});
     });
 
-    test('get non-existent user GET /user', async () => {
+    test('Get non-existent user GET /user', async () => {
         const response = await request(server)
             .get(`/user/${userGetModel._id}`)
             .send();
@@ -101,7 +95,7 @@ describe('CRUD user tests', () => {
         expect(response.body).toEqual({});
     });
 
-    test('update non-existent user PUT /user', async () => {
+    test('Update non-existent user PUT /user', async () => {
         const response = await request(server)
             .put(`/user/${userGetModel._id}`)
             .send(userUpdateModel);
@@ -109,7 +103,7 @@ describe('CRUD user tests', () => {
         expect(response.body).toEqual({});
     });
 
-    test('delete non-existent user DELETE /user', async () => {
+    test('Delete non-existent user DELETE /user', async () => {
         const response = await request(server)
             .delete(`/user/${userGetModel._id}`)
             .send();

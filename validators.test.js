@@ -64,60 +64,61 @@ const notValidPasswords = [
     "Qert3y&"
 ];
 
+describe('Validator user tests', () => {
+    test('Check getUser validator', () => {
+        checkField(validIds, notValidIds, validators.getUser, (item) => ({
+            _id: item
+        }))
+    });
 
-test('Check getUser validator', () => {
-    checkField(validIds, notValidIds, validators.getUser, (item) => ({
-        _id: item
-    }))
-});
+    test('Check createUser validator', () => {
+        checkField(validNames, notValidNames, validators.createUser, (item) => ({
+            username: item,
+            email: validEmails[0],
+            password: validPasswords[0]
+        }));
+        checkField(validPasswords, notValidPasswords, validators.createUser, (item) => ({
+            username: validNames[0],
+            email: validEmails[0],
+            password: item
+        }));
+        checkField(validEmails, notValidEmails, validators.createUser, (item) => ({
+            username: validNames[0],
+            email: item,
+            password: validPasswords[0]
+        }));
+    });
 
-test('Check createUser validator', () => {
-    checkField(validNames, notValidNames, validators.createUser, (item) => ({
-        username: item,
-        email: validEmails[0],
-        password: validPasswords[0]
-    }));
-    checkField(validPasswords, notValidPasswords, validators.createUser, (item) => ({
-        username: validNames[0],
-        email: validEmails[0],
-        password: item
-    }));
-    checkField(validEmails, notValidEmails, validators.createUser, (item) => ({
-        username: validNames[0],
-        email: item,
-        password: validPasswords[0]
-    }));
-});
+    test('Check updateUser validator', () => {
+        checkField(validIds, notValidIds, validators.updateUser, (item) => ({
+            _id: item,
+            username: validNames[0],
+            email: validEmails[0],
+            password: validPasswords[0]
+        }))
+        checkField(validNames, notValidNames, validators.updateUser, (item) => ({
+            _id: validIds[0],
+            username: item,
+            email: validEmails[0],
+            password: validPasswords[0]
+        }));
+        checkField(validPasswords, notValidPasswords, validators.updateUser, (item) => ({
+            _id: validIds[0],
+            username: validNames[0],
+            email: validEmails[0],
+            password: item
+        }));
+        checkField(validEmails, notValidEmails, validators.updateUser, (item) => ({
+            _id: validIds[0],
+            username: validNames[0],
+            email: item,
+            password: validPasswords[0]
+        }));
+    });
 
-test('Check updateUser validator', () => {
-    checkField(validIds, notValidIds, validators.updateUser, (item) => ({
-        _id: item,
-        username: validNames[0],
-        email: validEmails[0],
-        password: validPasswords[0]
-    }))
-    checkField(validNames, notValidNames, validators.updateUser, (item) => ({
-        _id: validIds[0],
-        username: item,
-        email: validEmails[0],
-        password: validPasswords[0]
-    }));
-    checkField(validPasswords, notValidPasswords, validators.updateUser, (item) => ({
-        _id: validIds[0],
-        username: validNames[0],
-        email: validEmails[0],
-        password: item
-    }));
-    checkField(validEmails, notValidEmails, validators.updateUser, (item) => ({
-        _id: validIds[0],
-        username: validNames[0],
-        email: item,
-        password: validPasswords[0]
-    }));
-});
-
-test('Check deleteUser validator', () => {
-    checkField(validIds, notValidIds, validators.deleteUser, (item) => ({
-        _id: item
-    }))
+    test('Check deleteUser validator', () => {
+        checkField(validIds, notValidIds, validators.deleteUser, (item) => ({
+            _id: item
+        }))
+    });
 });
